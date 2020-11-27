@@ -1,0 +1,80 @@
+.filtro-ativo {
+    font-weight: bold;
+}
+
+h2 {
+  margin-bottom: 3px;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+h5 {
+  font-size: 15px;
+}
+
+ul {
+  list-style: none;
+  padding-top: 0px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  height: 25px;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-group {
+  margin-top: 10px;
+}
+
+button {
+  display: block;
+  width: 15%;
+  margin: 0 auto;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #9932CC;
+  background-color: white;
+  background-clip: padding-box;
+  border: 1px solid #9932CC;
+  border-radius: 10px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+button:hover {
+  color: white;
+  background-color: #9932CC;
+}
+
+hr {
+  height: 3px;
+  background-color: #9932CC;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #9932CC;
+}
+
+.content {
+  display: flex;
+  margin: 15px auto 32px;
+  padding: 0 16px;
+  width: 1220px;
+  flex-direction: column;
+}

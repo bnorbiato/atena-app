@@ -1,0 +1,106 @@
+<h2>Cadastre um novo curso</h2>
+<p>preencha as informações para cadastrar um novo curso</p>
+<br>
+<form ng-submit="ctrl.submit()" ng-if="!ctrl.success">
+  <div class="form-group">
+    <label class="control-label" for="nameCourse">Nome do curso</label>
+    <input type="text" ng-model="ctrl.course.name" class="form-control" name="name" id="nameCourse">
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            <label class="control-label" for="startCourse">Data de início</label>
+            <input type="date" ng-model="ctrl.course.start" class="form-control" name="date-start" id="startCourse" >
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-group">
+            <label class="control-label" for="endCourse">Data de término</label>
+            <input type="date" ng-model="ctrl.course.end" class="form-control" name="date-end" id="endCourse">
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="durationCourse">Duração</label>
+    <input type="text" ng-model="ctrl.course.duration" class="form-control" name="duration" id="durationCourse">
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="aboutCourse">Descrição do curso</label>
+    <input type="textarea" ng-model="ctrl.course.about" class="form-control" name="about" id="aboutCourse">
+  </div>
+
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+</form>
+
+<hr>
+<h2>Lista de cursos</h2>
+<p>pesquise, edite e remova seus cursos cadastrados</p>
+<div class="row">
+  <div class="col-6">
+    <div class="mb-2">
+      <form class="form-inline" #formPesquisa="ngForm" (submit)="pesquisar()">
+        <div class="col-12 p-0" style="margin-top: 15px;">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Pesquisar por nome ou código" aria-label="Pesquisar por nome ou código"
+            name="q" [(ngModel)]="q">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" style="margin-top: 10px" type="submit"><i class="fa fa-search"></i>Pesquisar</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" width="80">Código</th>
+          <th scope="col">Disciplina</th>
+          <th scope="col" width="80">Ano</th>
+          <th scope="col" width="50">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let turma of turmas">
+          <th scope="row">{{turma.codigo}}</th>
+          <td>{{turma.disciplina}}</td>
+          <td>{{turma.ano}}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="excluir(turma)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-6">
+    <div>
+      <h2>Filtrar por:</h2>
+      <h5 style="margin-bottom: 0; padding-bottom: 0;">- Ano</h5>
+      <ul>
+        <li>
+          <a href="javascript:void(0)" [class.filtro-ativo]="!filtroPorAno" (click)="removerFiltroPorAno()">Todos</a>
+        </li>
+        <li *ngFor="let ano of anos">
+          <a href="javascript:void(0)" [class.filtro-ativo]="filtroPorAno === ano" (click)="filtrarPorAno(ano)">{{ano}}</a>
+        </li>
+      </ul>
+      <h5 style="margin-bottom: 0; padding-bottom: 0;">- Curso</h5>
+      <ul>
+        <li>
+          <a href="javascript:void(0)" [class.filtro-ativo]="!filtroPorDisciplina" (click)="removerFiltroPorDisciplina()">Todas</a>
+        </li>
+        <li *ngFor="let disciplina of disciplinas">
+          <a href="javascript:void(0)" [class.filtro-ativo]="filtroPorDisciplina === disciplina.nome" (click)="filtrarPorDisciplina(disciplina.nome)">{{disciplina.nome}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
